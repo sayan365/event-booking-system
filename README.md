@@ -4,7 +4,7 @@ This is a responsive front-end user interface for an **Event Booking System**, c
 
 ## 🚀 Live Demo
 
-👉 [View Website on GitHub Pages](https://sayan365.github.io/event-booking-system/) *(Replace with actual link after deploying)*
+👉 [View Website on GitHub Pages](https://bookingmyevents.netlify.app/) 
 
 ---
 
