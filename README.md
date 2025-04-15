@@ -43,7 +43,7 @@ This is a responsive front-end user interface for an **Event Booking System**, c
 ## 📸 Screenshots
 
 ### 🏠 Home Page (`index.html`)
-![Home Page](![Uploading image.png…]())
+![Home Page](https://i.ibb.co/0RYNgs2j/image.png)
 
 ### 📅 Events Page (`events.html`)
 ![Events Page](screenshots/events.png)
