@@ -19,9 +19,9 @@ This is a responsive front-end user interface for an **Event Booking System**, c
 ## 🧰 Technologies Used
 
 - **HTML5**
-- **CSS3**
+- **Tailwind CSS**
 - **JavaScript**
-- *(Optionally: Bootstrap or any CSS library if used)*
+- *(Flatpickr.js)*
 
 ---
 
@@ -43,8 +43,7 @@ This is a responsive front-end user interface for an **Event Booking System**, c
 ## 📸 Screenshots
 
 ### 🏠 Home Page (`index.html`)
-![Home Page](![Uploading image.png…]()
-)
+![Home Page](![Uploading image.png…]())
 
 ### 📅 Events Page (`events.html`)
 ![Events Page](screenshots/events.png)
@@ -52,7 +51,6 @@ This is a responsive front-end user interface for an **Event Booking System**, c
 ### 📬 Contact Page (`contact.html`)
 ![Contact Page](screenshots/contact.png)
 
-> ⚠️ Make sure the screenshots are stored in a folder named `screenshots` inside your repository. You can change the folder name or path if needed.
 
 ---
 
