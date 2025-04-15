@@ -42,14 +42,14 @@ This is a responsive front-end user interface for an **Event Booking System**, c
 2. Open index.html in your browser to get started.
 ## 📸 Screenshots
 
-### 🏠 Home Page (`index.html`)
-![Home Page](https://i.ibb.co/0RYNgs2j/image.png)
+### 🏠 Homepage
+![Homepage Screenshot](https://i.ibb.co/0RYNgs2j/image.png)
 
-### 📅 Events Page (`events.html`)
-![Events Page](screenshots/events.png)
+### 📅 Events Page
+![Events Screenshot](https://i.ibb.co/B5QkTpff/image.png)
 
-### 📬 Contact Page (`contact.html`)
-![Contact Page](screenshots/contact.png)
+### 📞 Contact Page
+![Contact Screenshot](https://i.ibb.co/zHH1Hsvg/image.png)
 
 
 ---
