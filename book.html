@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventify - Book Your Event</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <header class="sticky top-0 z-100 bg-white backdrop-filter backdrop-blur-lg bg-opacity-40 shadow ">
+    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 ">
+      <!-- Brand / Logo -->
+      <h1 class="text-2xl font-bold text-black" onclick="location.href='index.html'">EventBook</h1>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-500">
+        <a href="index.html" class="hover:text-black">Home</a>
+        <a href="events.html" class="hover:text-black">Upcoming Events</a>
+        <!-- <a href="#" class="hover:text-black">Packages &amp; Pricing</a> -->
+        <a href="about.html" class="hover:text-black">How It Works</a>
+      </nav>
+      <!-- Contact / CTA button -->
+      <div class="flex space-x-3">
+        <a href="contact.html"
+          class="hidden md:inline-block bg-gray-100 text-black px-5 py-2 border   rounded hover:bg-gray-700 hover:text-white transition">
+          Contact Us
+        </a>
+        <div
+          class="relative w-10 h-10 overflow-hidden border border-black bg-gray-100 cursor-pointer rounded-full dark:bg-gray-600">
+          <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
+            </path>
+          </svg>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden flex items-center px-3 py-2 border rounded text-black border-black"
+          onclick="toggleMobileMenu()">
+          <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Nav (hidden by default) -->
+    <div id="mobileNav"
+      class="hidden md:hidden bg-white backdrop-filter backdrop-blur-lg bg-opacity-10 px-6 py-4 border-t border-gray-200">
+      <a href="index.html" class="block py-2 text-sm hover:text-gray-500">Home</a>
+      <a href="events.html" class="block py-2 text-sm hover:text-gray-500">Upcoming Events</a>
+      <!-- <a href="#" class="block py-2 text-sm hover:text-gray-500">Packages &amp; Pricing</a> -->
+      <a href="about.html" class="block py-2 text-sm hover:text-gray-500">How It Works</a>
+      <a href="contact.html"
+        class="block w-full text-center mt-3 bg-gray-900 text-white px-5 py-2 rounded hover:bg-gray-700 transition">
+        Contact Us
+      </a>
+    </div>
+  </header>
+  <section class="hero min-h-screen flex items-center justify-center px-4">
+    <div class="w-full border-black mt-10 mb-10 border-[4px] max-w-xl bg-white rounded-lg shadow-lg p-8">
+      <!-- Form -->
+      <div id="bookingForm">
+        <h2 class="text-2xl font-bold mb-2 text-gray-800 text-center">Book Your Event</h2>
+        <p class="text-[13px] text-center mb-6">Fill out the form below to book your event. Our team will get back to
+          you shortly to confirm your reservation.</p>
+        <form class="space-y-4" autocomplete="off" action="bookingconf.html">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Your Name" class="w-full p-2 border border-gray-300 rounded" required />
+            <input type="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded" required />
+          </div>
+          <input type="tel" placeholder="Contact Number" class="w-full p-2 border border-gray-300 rounded" required />
+
+          <select id="fillEventType" class="w-full p-2 border border-gray-300 rounded" required>
+            <option value="">Select Event Type</option>
+            <option>Concert</option>
+            <option>Conference</option>
+            <option>Meetup</option>
+            <option>Party</option>
+          </select>
+          <input id="fillLocation" type="text" placeholder="Enter Location" required
+            class="w-full mb-4 p-2 border border-gray-300 rounded outline-none focus:ring-2 focus:ring-gray-400" />
+
+          <input type="number" placeholder="Number of Attendees" class="w-full p-2 border border-gray-300 rounded"
+            required />
+          <input id="eventDate" type="text" placeholder="Select Date"  required
+            class="w-full mb-6 p-2 border border-gray-300 rounded outline-none focus:ring-2 focus:ring-gray-400" />
+
+          <textarea placeholder="Event Description" rows="4" class="w-full p-2 border border-gray-300 rounded"></textarea>
+
+          <!-- Book Now Button -->
+          <button type="submit"
+            class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition">
+            Book Now
+          </button>
+        </form>
+      </div>
+
+      <!-- Success Message -->
+      <div id="successMessage" class="hidden text-center">
+        <div class="flex flex-col items-center justify-center py-8">
+          <svg class="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <h3 class="text-xl font-semibold mb-2 text-green-600">Your event has been booked successfully!</h3>
+          <p class="text-gray-600 mb-6">We’ll contact you shortly with the details.</p>
+          <button onclick="location.href='index.html';"
+            class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition">Back</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="bg-gray-200 py-6">
+    <div class="container mx-auto px-4 flex items-center justify-between">
+      <div class="text-sm">
+        <a href="#" class="hover:text-gray-400 mr-4">Terms & Conditions</a>
+        <a href="#" class="hover:text-gray-400 mr-4">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-400">Contact Us</a>
+      </div>
+      <div class="flex items-center">
+        <a href="#" class="hover:text-gray-400 mr-3">
+          <svg width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Facebook icon</title>
+            <path
+              d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z" />
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+        <a href="#" class="hover:text-gray-400 mr-3">
+          <svg width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Instagram icon</title>
+            <path
+              d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+          </svg>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a href="#" class="hover:text-gray-400 mr-3">
+          <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            class="bi bi-twitter">
+            <path
+              d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+        <a href="#" class="hover:text-gray-400 mr-3">
+          <svg width="32px" height="32px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                }
+              </style>
+            </defs>
+            <title>logo--youtube</title>
+            <path
+              d="M29.41,9.26a3.5,3.5,0,0,0-2.47-2.47C24.76,6.2,16,6.2,16,6.2s-8.76,0-10.94.59A3.5,3.5,0,0,0,2.59,9.26,36.13,36.13,0,0,0,2,16a36.13,36.13,0,0,0,.59,6.74,3.5,3.5,0,0,0,2.47,2.47C7.24,25.8,16,25.8,16,25.8s8.76,0,10.94-.59a3.5,3.5,0,0,0,2.47-2.47A36.13,36.13,0,0,0,30,16,36.13,36.13,0,0,0,29.41,9.26ZM13.2,20.2V11.8L20.47,16Z" />
+            <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32"
+              height="32" />
+          </svg>
+          <span class="sr-only">YouTube</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // Auto-fill form on load
+    window.onload = function () {
+      document.getElementById("fillEventType").value = localStorage.getItem("eventType") || "";
+      document.getElementById("fillLocation").value = localStorage.getItem("eventLocation") || "";
+      document.getElementById("eventDate").value = localStorage.getItem("eventDate") || "";
+      localStorage.removeItem("eventType");
+      localStorage.removeItem("eventLocation");
+      localStorage.removeItem("eventDate");
+    };
+
+
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

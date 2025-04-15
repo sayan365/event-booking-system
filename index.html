@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventBook - Where Every Event Begins</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Optional: custom font or adjustments */
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+
+  <!-- HERO SECTION (Two Columns) -->
+  <section class="w-full ">
+    <!-- NAVIGATION -->
+    <header class="sticky top-0 z-100 bg-white backdrop-filter backdrop-blur-lg bg-opacity-40 shadow ">
+      <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 ">
+        <!-- Brand / Logo -->
+        <h1 class="text-2xl font-bold text-black" onclick="location.href='index.html'">EventBook</h1>
+        <!-- Nav Links -->
+        <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+          <a href="#" class="hover:text-black">Home</a>
+          <a href="events.html" class="hover:text-black">Upcoming Events</a>
+          <!-- <a href="#" class="hover:text-black">Packages &amp; Pricing</a> -->
+          <a href="about.html" class="hover:text-black">How It Works</a>
+        </nav>
+        <!-- Contact / CTA button -->
+        <div class="flex space-x-3">
+          <a href="contact.html"
+            class="hidden md:inline-block bg-gray-100 text-black px-5 py-2 border border-gray-400 rounded hover:bg-gray-700 hover:text-white transition">
+            Contact Us
+          </a>
+          <div class="relative w-10 h-10 overflow-hidden border border-black bg-gray-100 cursor-pointer rounded-full dark:bg-gray-600">
+            <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd">
+              </path>
+            </svg>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden flex items-center px-3 py-2 border rounded text-black border-black"
+            onclick="toggleMobileMenu()">
+            <svg class="fill-current h-5 w-5" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Nav (hidden by default) -->
+      <div id="mobileNav"
+        class="hidden md:hidden bg-white backdrop-filter backdrop-blur-lg bg-opacity-10 px-6 py-4 border-t border-gray-200">
+        <a href="#" class="block py-2 text-sm hover:text-gray-500">Home</a>
+        <a href="events.html" class="block py-2 text-sm hover:text-gray-500">Upcoming Events</a>
+        <!-- <a href="#" class="block py-2 text-sm hover:text-gray-500">Packages &amp; Pricing</a> -->
+        <a href="about.html" class="block py-2 text-sm hover:text-gray-500">How It Works</a>
+        <a href="contact.html"
+          class="block w-full text-center mt-3 bg-gray-900 text-white px-5 py-2 rounded hover:bg-gray-700 transition">
+          Contact Us
+        </a>
+      </div>
+    </header>
+    <section>
+      <div class="max-w-8xl mx-auto flex flex-col md:flex-row h-140 bg-[#f7f7f7] hero">
+
+
+        <!-- LEFT COLUMN: Heading and Text -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-12 space-y-6 ">
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight text-black">
+            Book Your Next Event With Ease
+          </h2>
+          <p class="text-base md:text-lg text-black ">
+            Plan and Organize Events Easily get bookings, and enjoy the event!
+          </p>
+          <div class="space-x-4">
+            <a href="book.html"
+              class="bg-blue-600 text-white px-5 py-3 rounded hover:bg-gray-700 transition font-medium">
+              Book an Event
+            </a>
+            <a href="about.html" class="text-gray-600 font-medium">
+              Learn More &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Gray Background with Form -->
+        <div class="home-form w-full md:w-1/2 flex items-center justify-center p-8 md:p-12">
+          <div class="gradient-border w-full max-w-md p-[2px] rounded-lg relative hover:scale-[1.07] hover:shadow-2xl hover:-translate-y-1 duration-300">
+            <div class="bg-white w-full p-6 rounded-lg shadow relative z-10">
+              <h3 class="text-xl font-semibold mb-4">Book an Event</h3>
+              
+              <form onsubmit="return saveFormData()" autocomplete="off" action="book.html">
+              <!-- Event Type -->
+              <label for="eventType" class="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
+              <select id="eventType" required
+                class="w-full mb-4 p-2 border border-gray-300 rounded outline-none focus:ring-2 focus:ring-gray-400">
+                <option>Select Event Type</option>
+                <option>Concert</option>
+                <option>Conference</option>
+                <option>Meetup</option>
+                <option>Party</option>
+              </select>
+              <!-- Location -->
+              <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+              <input id="location" type="text" placeholder="Enter Location" required
+                class="w-full mb-4 p-2 border border-gray-300 rounded outline-none focus:ring-2 focus:ring-gray-400" />
+        
+              <!-- Date -->
+              <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+              <input id="eventDate" type="text" placeholder="Select Date" required
+                class="w-full mb-6 p-2 border border-gray-300 rounded outline-none focus:ring-2 focus:ring-gray-400" />
+        
+              <!-- Button -->
+              <button class="bg-gray-900 text-white w-full py-2 rounded hover:bg-gray-700 transition">Continue</button>
+            </form>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+    </section>
+    <!-- <hr class="border-black "> -->
+    <section class="py-10 bg-[#f0f8ff]">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-semibold text-center mb-2">GRAB YOUR TICKETS NOW! 🎉</h2>
+        <p class="text-[13px] text-center mb-6">Here are some upcoming public events that you can join and enjoy.</p>
+        <div class="relative">
+          <div class="flex space-x-2 overflow-x-auto scroll-smooth">
+            <div class="card w-80 flex-shrink-0 bg-white shadow">
+              <img
+                src="https://res.cloudinary.com/dwzmsvp7f/image/upload/f_auto,w_1024/c_crop%2Cg_custom%2Fv1743509254%2Fz5sanipbts0rf2pg70oa.jpg?Text=IPL+Match"
+                alt="IPL Match" class="w-full h-40 object-cover card-img">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2">TATA IPL 2025 - Match 32 - Delhi Capitals vs Rajasthan Royals
+                </h3>
+                <p class="text-gray-600 text-sm mb-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>April 16 | 7:30 PM</p>
+                <p class="text-gray-600 text-sm mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>Arun Jaitley Stadium, Delhi</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">₹1850</span>
+                  <button onclick="openModal('TATA IPL 2025 - Match 32 - Delhi Capitals vs Rajasthan Royals', 'April 16 | 7:30 PM at Arun Jaitley Stadium, Delhi')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-sm">BOOK
+                    NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card w-80 flex-shrink-0 bg-white shadow">
+              <img
+                src="https://res.cloudinary.com/dwzmsvp7f/image/upload/f_auto,w_1024/c_crop%2Cg_custom%2Fv1742800387%2Fvbyubx06yonjljt1tmi0.jpg?Text=Arijit+Singh+Concert"
+                alt="Arijit Singh Concert" class="w-full h-40 object-cover card-img">
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-9 ">Arijit Singh Live in Surat 2025</h3>
+                <p class="text-gray-600 text-sm mb-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>May 24 | 7 PM</p>
+                <p class="text-gray-600 text-sm mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>Khajod, C.B.Patel Cricket Stadium,...</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">₹1999</span>
+                  <button onclick="openModal('Arijit Singh Live in Surat 2025', 'May 24 | 7 PM at Khajod, C.B.Patel Cricket Stadium')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-sm">BOOK
+                    NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card w-80 flex-shrink-0 bg-white shadow">
+
+              <img
+                src="https://res.cloudinary.com/dwzmsvp7f/image/upload/f_auto,w_1024/c_crop%2Cg_custom%2Fv1743668231%2Fj1beg2rxl3pdu8qiprs4.jpg?Text=IPL+Match"
+                alt="IPL Match" class="w-full h-40 object-cover card-img">
+
+              <div class="p-4" >
+                <h3 class="text-lg font-semibold mb-2">TATA IPL 2025 - Match 27 - Sunrisers Hyderabad vs Punjab</h3>
+                <p class="text-gray-600 text-sm mb-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>April 12 | 7:30 PM</p>
+                <p class="text-gray-600 text-sm mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>Rajiv Gandhi International Cricket...</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-bold">₹750</span>
+                  <button onclick="openModal('TATA IPL 2025 - Match 27 - Sunrisers Hyderabad vs Punjab', 'April 12 | 7:30 PM at Rajiv Gandhi International Cricket...')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md text-sm">BOOK
+                    NOW</button>
+                </div>
+              </div>
+            </div>
+            
+            <button onclick="location.href='events.html';" class="card w-40 flex-shrink-0 h-auto py-4 border border-blue-500 bg-blue-200 hover:bg-blue-500 text-blue-900 hover:text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out">
+              See More &rarr;
+          </button>
+          </div>
+          
+    </section>
+  
+    <section class="py-12 text-white bg-[#f0f8ff]">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center text-black mb-10">Our Clients' Feedback ✨</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Testimonial 1 -->
+          <div class="bg-gray-800 p-6 rounded-xl shadow-md transform hover:shadow-xl  hover:bg-gray-700 transition duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGmt7mgLLJbU_An415Sur0-Iq8kRKQzzAwCw&s" alt="Client 1" class="w-12 h-12 rounded-full mr-4 object-cover">
+              <div>
+                <h4 class="font-semibold text-lg">Rahul Sharma</h4>
+                <p class="text-sm text-gray-400">Event Organizer</p>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-gray-200">"Booking through this platform was super smooth! Got my IPL tickets in seconds. Loved the design and fast experience."</p>
+          </div>
+        
+          <!-- Testimonial 2 -->
+          <div class="bg-gray-800 p-6 rounded-xl shadow-md transform hover:shadow-xl hover:bg-gray-700 transition duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://www.shutterstock.com/image-photo/close-head-shot-portrait-preppy-600nw-1433809418.jpg" alt="Client 2" class="w-12 h-12 rounded-full mr-4 object-cover">
+              <div>
+                <h4 class="font-semibold text-lg">Ankita Bose</h4>
+                <p class="text-sm text-gray-400">Concert Enthusiast</p>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-gray-200">"Attending Arijit Singh’s concert was a dream. This site made booking hassle-free. Loved the support too!"</p>
+          </div>
+        
+          <!-- Testimonial 3 -->
+          <div class="bg-gray-800 p-6 rounded-xl shadow-md transform hover:shadow-2xl hover:bg-gray-700 transition duration-300">
+            <div class="flex items-center mb-4">
+              <img src="https://img.freepik.com/free-photo/smiley-man-posing-medium-shot_23-2149915893.jpg" alt="Client 3" class="w-12 h-12 rounded-full mr-4 object-cover">
+              <div>
+                <h4 class="font-semibold text-lg">Sourav Ghosh</h4>
+                <p class="text-sm text-gray-400">Cricket Fan</p>
+              </div>
+            </div>
+            <p class="text-sm sm:text-base text-gray-200">"Finally a platform that’s quick, mobile-friendly, and looks amazing. I’ve recommended it to all my friends."</p>
+          </div>
+        
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    
+    <div class="bg-[#f0f8ff] py-12">
+      <div class="container mx-auto px-4 text-center">
+          <h2 class="text-2xl font-semibold text-gray-700 mb-6">What brings you here?</h2>
+          <div class="flex justify-center space-x-4">
+              <a href="book.html" class="bg-white hover:bg-blue-100 text-gray-700 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                  I want to host an event
+              </a>
+              <a href="events.html" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                  I'm looking for tickets to an event
+              </a>
+          </div>
+      </div>
+  </div>
+  <hr class=" border-black">
+    <footer class="bg-gray-200 py-6">
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div class="text-sm">
+            <a href="#" class="hover:text-gray-400 mr-4">Terms & Conditions</a>
+            <a href="#" class="hover:text-gray-400 mr-4">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-400">Contact Us</a>
+        </div>
+        <div class="flex items-center">
+            <a href="#" class="hover:text-gray-400 mr-3">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><title>Facebook icon</title><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg>
+                <span class="sr-only">Facebook</span>
+            </a>
+            <a href="#" class="hover:text-gray-400 mr-3">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><title>Instagram icon</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                <span class="sr-only">Instagram</span>
+            </a>
+            <a href="#" class="hover:text-gray-400 mr-3">
+              <svg width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+              </svg>
+                <span class="sr-only">Twitter</span>
+            </a>
+            <a href="#" class="hover:text-gray-400 mr-3">
+              <svg width="32px" height="32px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title>logo--youtube</title><path d="M29.41,9.26a3.5,3.5,0,0,0-2.47-2.47C24.76,6.2,16,6.2,16,6.2s-8.76,0-10.94.59A3.5,3.5,0,0,0,2.59,9.26,36.13,36.13,0,0,0,2,16a36.13,36.13,0,0,0,.59,6.74,3.5,3.5,0,0,0,2.47,2.47C7.24,25.8,16,25.8,16,25.8s8.76,0,10.94-.59a3.5,3.5,0,0,0,2.47-2.47A36.13,36.13,0,0,0,30,16,36.13,36.13,0,0,0,29.41,9.26ZM13.2,20.2V11.8L20.47,16Z"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
+                <span class="sr-only">YouTube</span>
+            </a>
+        </div>
+    </div>
+    </footer>
+
+    <!-- Overlay -->
+<div id="eventModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <!-- Modal -->
+  <div class="bg-white w-[90%] max-w-md rounded-xl p-6 shadow-lg relative">
+    <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-xl">&times;</button>
+
+    <!-- Event Content -->
+    <div id="eventContent">
+      <h2 class="text-xl font-semibold mb-2" id="modalEventTitle">Event Title</h2>
+      <p class="text-sm text-gray-600 mb-4" id="modalEventDetails">Event details...</p>
+      
+      <form id="tbookingForm" onsubmit="handletBooking(event)">
+        <input type="text" placeholder="Your Name" required class="w-full mb-2 border px-3 py-2 rounded" />
+        <input type="tel" name="tel" placeholder="Contact Number" 
+        class="w-full p-2 border border-gray-300 rounded mb-2" 
+        pattern="[0-9]{10,15}" 
+        title="Please enter a number between 10 and 15 digits" 
+        required />
+        <input type="number" placeholder="Number of Attendees" required class="w-full mb-4 border px-3 py-2 rounded" />
+        <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">Book Now</button>
+      </form>
+    </div>
+
+    <!-- Success Message -->
+    <div id="tsuccessMessage" class="hidden text-center">
+      <div class="text-green-500 text-5xl mb-2">&#10004;</div>
+      <p class="text-lg font-semibold mb-2">Booking Successful!</p>
+      <button onclick="closeModal()" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Back</button>
+    </div>
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      // Toggle Mobile Menu
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.classList.toggle('hidden');
+      }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+
+.hero{
+  background: linear-gradient(180deg, #64d3ff, #c9e6ff,#f0f8ff,#f0f8ff);
+}
+
+.card{
+  border-radius: 25px;
+  border: solid 6px black;
+  
+}
+.card-img{
+  border-radius: 18px 18px 0 0;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem; /* same as rounded-lg */
+  overflow: hidden;
+  z-index: 11;
+  padding: 6px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #facc15, #f87171);
+  background-size: 800% 800%;
+  animation: gradientAnim 8s ease infinite;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.gradient-border > div {
+  position: relative;
+  z-index: 10;
+  border-radius: inherit;
+}
+
+@keyframes gradientAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media only screen and (max-width: 600px) {
+  .hero{
+   height: 35lvh;
+   background-color: #90ddfc;
+   background: linear-gradient(180deg, #00b4fc, #f0f8ff);
+  }
+  
+  .home-form{
+    display: none;
+  }
+}
+
+
+
